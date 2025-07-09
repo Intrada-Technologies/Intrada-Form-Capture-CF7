@@ -4,13 +4,13 @@
  * Plugin Name:       Intrada Contact Form 7 Form Capture
  * Plugin URI:        https://github.com/Intrada-Technologies/Intrada-Form-Capture-CF7/
  * Description:       Captures Contact Form 7 submissions and sends them to a custom endpoint.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Intrada Technologies
  * Author URI:        https://intradatech.com/
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       cf7-intrada-form-capture
- * Requires Plugins:  elementor-pro
+ * Requires Plugins:  contact-form-7
  */
 
 // Exit if accessed directly

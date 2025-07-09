@@ -4,7 +4,7 @@
  * Plugin Name:       Intrada Contact Form 7 Form Capture
  * Plugin URI:        https://github.com/Intrada-Technologies/Intrada-Form-Capture-CF7/
  * Description:       Captures Contact Form 7 submissions and sends them to a custom endpoint.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Intrada Technologies
  * Author URI:        https://intradatech.com/
  * License:           MIT

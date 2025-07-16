@@ -19,7 +19,7 @@ class icf7_Form_Capture
     $this->settings = get_option('icf7_form_capture_settings', []);
 
     // Hook into Contact Form 7's form submission action
-    add_action('wpcf7_submit', [$this, 'capture_form_submission'], 10, 2);
+    add_action('wpcf7_before_send_mail', [$this, 'capture_form_submission'], 10, 2);
   }
 
   /**

@@ -4,13 +4,14 @@
  * Plugin Name:       Intrada Contact Form 7 Form Capture
  * Plugin URI:        https://github.com/Intrada-Technologies/Intrada-Form-Capture-CF7/
  * Description:       Captures Contact Form 7 submissions and sends them to a custom endpoint.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            Intrada Technologies
  * Author URI:        https://intradatech.com/
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       cf7-intrada-form-capture
  * Requires Plugins:  contact-form-7
+ * Update URI:        https://raw.githubusercontent.com/Intrada-Technologies/Intrada-Form-Capture-CF7/main/info.json
  */
 
 // Exit if accessed directly
@@ -78,20 +79,56 @@ add_action('init', 'icf7_intrada_form_capture_init');
 
 
 /**
- * Add settings link to plugin action links
+ * Add custom links to the plugin row on the plugins page.
  */
-function icf7_intrada_form_capture_add_settings_link($links)
-{
-  $settings_link = '<a href="admin.php?page=icf7-intrada-form-capture-settings">' . __('Settings', 'icf7-intrada-form-capture') . '</a>';
-  array_unshift($links, $settings_link);
-  return $links;
+function intrada_cf7_add_plugin_links() {
+    $plugin_basename = plugin_basename( __FILE__ );
+
+    // Add "Settings" link to the main action links
+    add_filter( 'plugin_action_links_' . $plugin_basename, 'intrada_cf7_add_settings_action_link' );
+
+    // Add "View details" link to the meta links
+    add_filter( 'plugin_row_meta', 'intrada_cf7_add_details_meta_link', 10, 2 );
+}
+add_action( 'admin_init', 'intrada_cf7_add_plugin_links' );
+
+/**
+ * Adds the "Settings" link.
+ */
+function intrada_cf7_add_settings_action_link( $links ) {
+    $settings_link = sprintf(
+        '<a href="admin.php?page=icf7-intrada-form-capture-settings">%s</a>',
+        esc_html__( 'Settings', 'cf7-intrada-form-capture' )
+    );
+    array_unshift( $links, $settings_link );
+    return $links;
 }
 
 /**
- * Initialize plugin action links after text domain is loaded
+ * Adds the "View details" link.
  */
-function icf7_intrada_form_capture_init_admin()
-{
-  add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'icf7_intrada_form_capture_add_settings_link');
+function intrada_cf7_add_details_meta_link( $links, $file ) {
+    // Ensure this is your plugin
+    if ( plugin_basename( __FILE__ ) === $file ) {
+        // Use your Text Domain for the slug
+        $plugin_slug = 'intrada-cf7-form-capture';
+        $details_url = add_query_arg(
+            [
+                'tab'       => 'plugin-information',
+                'plugin'    => $plugin_slug,
+                'TB_iframe' => 'true',
+                'width'     => '772',
+                'height'    => '550',
+            ],
+            admin_url( 'plugin-install.php' )
+        );
+
+        $links[] = sprintf(
+            '<a href="%s" class="thickbox" title="%s">%s</a>',
+            esc_url( $details_url ),
+            esc_attr__( 'More information about the Intrada CF7 Capture Integration plugin', 'cf7-intrada-form-capture' ),
+            esc_html__( 'View details', 'cf7-intrada-form-capture' )
+        );
+    }
+    return $links;
 }
-add_action('init', 'icf7_intrada_form_capture_init_admin');

@@ -3,16 +3,16 @@
   "slug": "intrada-cf7-form-capture",
   "author": "<a href='https://intradatech.com'>Intrada Technologies</a>",
   "author_profile": "https://www.intradatech.com/about-intrada",
-  "version": "1.0.4",
-  "last_updated": "2025-07-09 16:52:00",
+  "version": "1.0.5",
+  "last_updated": "2025-07-16 12:27:00",
   "download_url": "https://github.com/Intrada-Technologies/Intrada-Form-Capture-CF7/releases/latest/download/intrada-cf7-form-capture.zip",
   "requires": "5.0",
-  "tested": "6.8.1",
+  "tested": "6.8.2",
   "requires_php": "7.4",
   "sections": {
     "description": "Captures Contact Form 7 form submissions and sends them to a custom endpoint",
     "installation": "Activate the plugin through the 'Plugins' menu in WordPress. Setup the webhook URL, site id, site secret, and api in the plugin settings. ",
-    "changelog": "<h1>Changelog</h1><ul><li>Version 1.0.4 - Improved form submission handling</li><li>Version 1.0.3 - Initial release</li></ul>"
+    "changelog": "<h1>Changelog</h1><ul><li>Version 1.0.5 - Added View Details Link | tested on latest version</li><li>Version 1.0.4 - Improved form submission handling</li><li>Version 1.0.3 - Initial release</li></ul>"
   },
   "banners": {
     "low": "https://www.intradatech.com/uploads/Intrada_Technologies_5198ead2c9.png?format=webp",
